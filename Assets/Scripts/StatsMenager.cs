@@ -1,16 +1,55 @@
+using System.Security.Cryptography.X509Certificates;
+using TMPro;
 using UnityEngine;
 
 public class StatsMenager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public static StatsMenager Instance;
+
+    public TextMeshProUGUI ScoreText;
+    public TextMeshProUGUI HPText;
+
+    private float scoreTime;
+    public int scoreScore;
+    public int HPHP;
+    private void Awake()
     {
-        
+        Instance = this;
+        HPHP = 100;
     }
 
-    // Update is called once per frame
+    private void Start()
+    {
+        UpdateHP();
+    }
+
     void Update()
     {
-        
+        if (ScoreText != null)
+        {
+            if (scoreTime < Time.time)
+            {
+                scoreScore += 1;
+                scoreTime = Time.time + 1;
+                UpdateTxt();
+            }
+        }
+
+    }
+
+    public void UpdateTxt()
+    {
+        if (ScoreText != null)
+        {
+            ScoreText.text = scoreScore.ToString();
+        }
+    }
+
+    public void UpdateHP()
+    {
+        if (HPText != null)
+        {
+            HPText.text = "HP: " + HPHP.ToString() + "/100";
+        }
     }
 }

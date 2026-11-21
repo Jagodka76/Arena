@@ -20,8 +20,6 @@ public class PlayerControl : MonoBehaviour
         verticalMove = Input.GetAxisRaw("Vertical");
         horizontalMove = Input.GetAxisRaw("Horizontal");
 
-
-
         if(PlayerObject != null)
         {
             if(horizontalMove != 0f || verticalMove != 0f)
