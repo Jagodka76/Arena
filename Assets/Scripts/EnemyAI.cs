@@ -5,12 +5,12 @@ public class EnemyAI : MonoBehaviour
     private GameObject player;
     private GameObject me;
 
-    private float SpeedEnemy;
+    public float SpeedEnemy;
     void Start()
     {
         me = gameObject;
         player = StatsMenager.Instance.gameObject;
-        SpeedEnemy = player.transform.GetComponent<PlayerControl>().Speed + 0.1f;
+        SpeedEnemy = player.transform.GetComponent<PlayerControl>().SpeedPlayer - 0.5f;
     }
 
     void Update()
