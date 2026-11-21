@@ -8,6 +8,7 @@ public class StatsMenager : MonoBehaviour
 
     public TextMeshProUGUI ScoreText;
     public TextMeshProUGUI HPText;
+    public GameObject Dead;
 
     private float scoreTime;
     public int scoreScore;
@@ -50,6 +51,11 @@ public class StatsMenager : MonoBehaviour
         if (HPText != null)
         {
             HPText.text = "HP: " + HPHP.ToString() + "/100";
+        }
+
+        if(HPHP <= 0)
+        {
+            Dead.SetActive(true);
         }
     }
 }

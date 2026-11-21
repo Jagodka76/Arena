@@ -17,12 +17,13 @@ public class EnemyAI : MonoBehaviour
     {
         float xx = player.transform.position.x - me.transform.position.x;
         float yy = player.transform.position.y - me.transform.position.y;
+        float disss = 0f;
 
-        if(xx < 0)
+        if(xx < disss)
         {
             xx = -1;
         }
-        else if(xx > 0)
+        else if(xx > disss)
         {
             xx = 1;
         }
@@ -31,11 +32,11 @@ public class EnemyAI : MonoBehaviour
             xx = 0;
         }
 
-        if (yy < 0)
+        if (yy < disss)
         {
             yy = -1;
         }
-        else if (yy > 0)
+        else if (yy > disss)
         {
             yy = 1;
         }
