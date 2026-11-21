@@ -75,6 +75,8 @@ public class BulletScri : MonoBehaviour
     {
         if(collision.transform.parent == EnemBox)
         {
+            StatsMenager.Instance.scoreScore += 5;
+            StatsMenager.Instance.UpdateTxt();
             Destroy(collision.gameObject);
             Destroy(gameObject);
         }

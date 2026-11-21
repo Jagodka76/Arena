@@ -8,6 +8,7 @@ public class StatsMenager : MonoBehaviour
 
     public TextMeshProUGUI ScoreText;
     public TextMeshProUGUI HPText;
+    public TextMeshProUGUI DeadScoreText;
     public GameObject Dead;
 
     private float scoreTime;
@@ -55,6 +56,8 @@ public class StatsMenager : MonoBehaviour
 
         if(HPHP <= 0)
         {
+            transform.GetComponent<PlayerControl>().enabled = false;
+            DeadScoreText.text = scoreScore.ToString();
             Dead.SetActive(true);
         }
     }

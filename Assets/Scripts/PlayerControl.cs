@@ -15,6 +15,8 @@ public class PlayerControl : MonoBehaviour
     private float TiemToShot;
 
     private Camera Cam;
+
+    private bool outSideArena;
     private void Awake()
     {
         PlayerObject = this.gameObject;
@@ -37,18 +39,13 @@ public class PlayerControl : MonoBehaviour
                 {
                     Vector3 move = new Vector3(horizontalMove, verticalMove, 0);
                     PlayerObject.transform.position += move * SpeedPlayer * Time.deltaTime;
+                    outSideArena = false;
                 }
                 else
                 {
                     Vector3 move = new Vector3(horizontalMove, verticalMove, 0);
                     PlayerObject.transform.position += move * SpeedPlayer * Time.deltaTime;
-
-                    if(TimeDead < Time.time)
-                    {
-                        TimeDead = Time.time + 1;
-                        StatsMenager.Instance.HPHP -= 1;
-                        StatsMenager.Instance.UpdateHP();
-                    }
+                    outSideArena = true;
                 }
             }
 
@@ -65,6 +62,16 @@ public class PlayerControl : MonoBehaviour
                 BulRb.linearVelocity = direction * 3 * SpeedPlayer;
 
                 TiemToShot = Time.time + 0.25f;
+            }
+        }
+
+        if (outSideArena)
+        {
+            if (TimeDead < Time.time)
+            {
+                TimeDead = Time.time + 1;
+                StatsMenager.Instance.HPHP -= 1;
+                StatsMenager.Instance.UpdateHP();
             }
         }
     }
