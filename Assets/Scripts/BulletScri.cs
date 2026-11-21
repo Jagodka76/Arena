@@ -9,6 +9,8 @@ public class BulletScri : MonoBehaviour
     private Vector3 TurningPoint;
     private Camera Cam;
 
+    private int ColNum = 0;
+
     private void Start()
     {
         TimeToDie = 1.5f + Time.time;
@@ -67,5 +69,22 @@ public class BulletScri : MonoBehaviour
             Vector3 move = new Vector3(xx, yy, 0);
             this.transform.position += move * 2f * Time.deltaTime;
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.transform.parent == EnemBox)
+        {
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
+        }
+
+        //Jedno odbice bo po dwóch nie am zastoswoania
+        if(ColNum == 1)
+        {
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
+        }
+        ColNum += 1;
     }
 }

@@ -28,7 +28,7 @@ public class StatsMenager : MonoBehaviour
     {
         if (ScoreText != null)
         {
-            if (scoreTime < Time.time)
+            if (scoreTime < Time.time && HPHP > 0)
             {
                 scoreScore += 1;
                 scoreTime = Time.time + 1;
